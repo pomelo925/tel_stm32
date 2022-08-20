@@ -1,0 +1,6 @@
+../Core/Inc/scara.h:13:3:ARM_INFO::ARM_INFO()	16	static
+../Core/Inc/scara.h:15:7:SCARA::SCARA()	16	static
+../Core/Src/scara.cpp:6:6:void SCARA::run()	16	static
+../Core/Src/scara.cpp:11:6:void SCARA::tf2_arm_angle()	16	static
+../Core/Src/scara.cpp:14:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Core/Src/scara.cpp:14:1:cpp)	8	static
