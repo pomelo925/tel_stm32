@@ -76,8 +76,8 @@ all: main-build
 main-build: TEL_STM_1.elf secondary-outputs
 
 # Tool invocations
-TEL_STM_1.elf TEL_STM_1.map: $(OBJS) $(USER_OBJS) C:\mecanum\TEL_STM_1\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "TEL_STM_1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\mecanum\TEL_STM_1\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TEL_STM_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+TEL_STM_1.elf TEL_STM_1.map: $(OBJS) $(USER_OBJS) D:\pomelo\DIT\STM32\TEL_STM_1\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "TEL_STM_1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\pomelo\DIT\STM32\TEL_STM_1\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TEL_STM_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
