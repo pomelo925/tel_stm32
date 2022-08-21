@@ -17,6 +17,7 @@ class DC_motor{
 		unsigned short CountNow;
 		double I_limit;
 		double temp;
+		int pid_check=0;
 
 		DC_motor(double p, double i, double d, double time, double res, double ratio, double limit);
 		void PIDControl();

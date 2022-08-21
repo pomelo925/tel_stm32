@@ -10,7 +10,7 @@
 ../Core/Src/stm32h7xx_it.c:209:6:RCC_IRQHandler	4	static
 ../Core/Src/stm32h7xx_it.c:222:6:DMA1_Stream0_IRQHandler	8	static
 ../Core/Src/stm32h7xx_it.c:236:6:DMA1_Stream1_IRQHandler	8	static
-../Core/Src/stm32h7xx_it.c:250:6:USART3_IRQHandler	8	static
+../Core/Src/stm32h7xx_it.c:250:6:USART1_IRQHandler	8	static
 ../Core/Src/stm32h7xx_it.c:264:6:TIM8_BRK_TIM12_IRQHandler	8	static
 ../Core/Src/stm32h7xx_it.c:278:6:TIM8_UP_TIM13_IRQHandler	8	static
 ../Core/Src/stm32h7xx_it.c:292:6:TIM15_IRQHandler	8	static
