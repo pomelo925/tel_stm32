@@ -10,6 +10,7 @@
 "./Core/Src/stepper.o"
 "./Core/Src/stm32h7xx_hal_msp.o"
 "./Core/Src/stm32h7xx_it.o"
+"./Core/Src/stm_main.o"
 "./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32h7xx.o"

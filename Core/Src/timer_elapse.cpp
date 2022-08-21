@@ -62,7 +62,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 
 		/*enc 1*/
-		fr.CountNow = 1212/*__HAL_TIM_GetCounter(&htim2)*/;
+		fr.CountNow = __HAL_TIM_GetCounter(&htim2);
 		fr.PIDControl();
 		__HAL_TIM_SetCounter(&htim2,0);
 		if (fr.PID >= 0) {

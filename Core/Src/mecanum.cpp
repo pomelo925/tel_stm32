@@ -24,7 +24,7 @@ void Mecanum::tf2_wheel_speed(void){
 
 // give current car speed
 void Mecanum::tf2_car_speed(void){
-	CAR_Now.Vx = (1/4)*(fl.rps_now + fr.rps_now + bl.rps_now + br.rps_now);
-	CAR_Now.Vy = (1/4)*(-fl.rps_now + fr.rps_now + bl.rps_now - br.rps_now);
-	CAR_Now.Omega = (1/4)*(1/(a+b))*(-fl.rps_now + fr.rps_now - bl.rps_now + br.rps_now);
+	CAR_Now.Vx = (1/4)*radius*(fl.rps_now + fr.rps_now + bl.rps_now + br.rps_now);
+	CAR_Now.Vy = (1/4)*radius*(-fl.rps_now + fr.rps_now + bl.rps_now - br.rps_now);
+	CAR_Now.Omega = (1/4)*radius*(1/(a+b))*(-fl.rps_now + fr.rps_now - bl.rps_now + br.rps_now);
 }
