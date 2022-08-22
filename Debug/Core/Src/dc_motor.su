@@ -1,5 +1,5 @@
 ../Core/Src/dc_motor.cpp:18:6:void DC_motor_init()	8	static
 ../Core/Src/dc_motor.cpp:35:1:DC_motor::DC_motor(double, double, double, double, double, double, double)	72	static
 ../Core/Src/dc_motor.cpp:45:6:void DC_motor::PIDControl()	16	static
-../Core/Src/dc_motor.cpp:65:1:void __static_initialization_and_destruction_0(int, int)	16	static
-../Core/Src/dc_motor.cpp:65:1:cpp)	8	static
+../Core/Src/dc_motor.cpp:69:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Core/Src/dc_motor.cpp:69:1:cpp)	8	static
