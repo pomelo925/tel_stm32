@@ -14,7 +14,7 @@ class DC_motor{
 		double res_encoder;
 		double sr_ratio;
 		double error;
-		unsigned short CountNow;
+		short CountNow;
 		double I_limit;
 		double temp;
 		int pid_check=0;

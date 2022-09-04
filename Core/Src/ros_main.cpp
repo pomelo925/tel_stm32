@@ -4,7 +4,6 @@
 
 ros::NodeHandle nh;
 
-std_msgs::Bool scara_state;
 geometry_msgs::Point car_speed;
 
 ros::Subscriber<geometry_msgs::Point> mecanum_sub("mecanum_toSTM", ROS::mecanum_callback);
@@ -27,12 +26,12 @@ void ROS::mecanum_callback(const geometry_msgs::Point &msgs){
 	mecanum.run();
 }
 
-//void ROS::pub_car_vel(void){
-//	car_speed.x = mecanum.CAR_Now.Vx;
-//	car_speed.y = mecanum.CAR_Now.Vy;
-//	car_speed.z = mecanum.CAR_Now.Omega;
-//	mecanum_pub.publish(&car_speed);
-//}
+// void ROS::pub_car_vel(void){
+// 	car_speed.x = mecanum.CAR_Now.Vx;
+// 	car_speed.y = mecanum.CAR_Now.Vy;
+// 	car_speed.z = mecanum.CAR_Now.Omega;
+// 	mecanum_pub.publish(&car_speed);
+// }
 
 
 void ROS::setup(void){

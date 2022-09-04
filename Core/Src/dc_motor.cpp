@@ -10,10 +10,10 @@ extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim15;
 
 /*** Arguments NON-SETUP ***/
-DC_motor fr(25000,10,0.1,0.0005,512,13.2,200);
-DC_motor fl(25000,10,0.1,0.0005,512,13.2,200);
-DC_motor br(25000,10,0.1,0.0005,512,13.2,200);
-DC_motor bl(25000,10,0.1,0.0005,512,13.2,200);
+DC_motor fr(188,7,0.001,0.001,512,13.2,200);
+DC_motor fl(5.2,2,0.001,0.001,512,13.2,200);
+DC_motor br(155,2,0.002,0.001,512,13.2,200);
+DC_motor bl(155,5,0.006,0.001,512,13.2,200);
 
 void DC_motor_init(){
 	HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_1);
@@ -30,7 +30,6 @@ void DC_motor_init(){
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_1);
 }
-
 
 DC_motor::DC_motor(double p, double i, double d, double time, double res, double ratio, double limit){
 	this->p = p;
@@ -62,6 +61,8 @@ void DC_motor::PIDControl(void){
 	}
 	D = d * (error - temp) / time;
 	PID = P + I + D;
+
+
 }
 
 

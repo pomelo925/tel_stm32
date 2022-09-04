@@ -11,7 +11,6 @@ class Mecanum{
 public:
 	Mecanum(void);
 	CAR_INFO CAR_Goal, CAR_Now;
-
 	void run(void);
 
 private:

@@ -50,7 +50,7 @@ extern TIM_HandleTypeDef htim15;
 #define STEP_PIN_4 GPIO_PIN_9
 
 //int ms=0;
-
+double ac;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
@@ -69,12 +69,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fr, MOTORPLUS_PIN_fr, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fr, MOTORMINUS_PIN_fr, GPIO_PIN_RESET);
 		}
-		if (fr.PID < 0) {
+		else{
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fr, MOTORPLUS_PIN_fr, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fr, MOTORMINUS_PIN_fr, GPIO_PIN_SET);
 			fr.PID = -fr.PID;
 		}
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, (int )fr.PID);
+		fr.PID = fabs(fr.PID);
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, abs((int)fr.PID));
 
 		/*enc 2*/
 		fl.CountNow = __HAL_TIM_GetCounter(&htim5);
@@ -95,11 +96,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		br.CountNow = __HAL_TIM_GetCounter(&htim3);
 		br.PIDControl();
 		__HAL_TIM_SetCounter(&htim3,0);
-		if (br.PID < 0) {
+		if (br.PID > 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_br, MOTORPLUS_PIN_br, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_br, MOTORMINUS_PIN_br, GPIO_PIN_RESET);
 		}
-		if (br.PID >= 0) {
+		else{
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_br, MOTORPLUS_PIN_br, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_br, MOTORMINUS_PIN_br, GPIO_PIN_SET);
 			br.PID = -br.PID;
@@ -119,7 +120,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_bl, MOTORMINUS_PIN_bl, GPIO_PIN_SET);
 			bl.PID = -bl.PID;
 		}
-		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_2, (int )bl.PID);
+		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_2,(int )bl.PID);
 
 
 	}
