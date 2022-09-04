@@ -313,9 +313,15 @@ TIM13.Period=999
 TIM13.Prescaler=83
 TIM15.Channel-PWM\ Generation1\ CH1=TIM_CHANNEL_1
 TIM15.Channel-PWM\ Generation2\ CH2=TIM_CHANNEL_2
+<<<<<<< HEAD
 TIM15.IPParameters=Channel-PWM Generation1 CH1,Channel-PWM Generation2 CH2,Prescaler,Period
 TIM15.Period=49
 TIM15.Prescaler=83
+=======
+TIM15.IPParameters=Channel-PWM Generation1 CH1,Channel-PWM Generation2 CH2
+TIM2.EncoderMode=TIM_ENCODERMODE_TI12
+TIM2.IPParameters=EncoderMode
+>>>>>>> 22f62573230fba3cc771e78af44e04fca96d9213
 USART1.IPParameters=VirtualMode-Asynchronous
 USART1.VirtualMode-Asynchronous=VM_ASYNC
 VP_TIM13_VS_ClockSourceINT.Mode=Enable_Timer

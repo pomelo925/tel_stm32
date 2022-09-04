@@ -46,6 +46,10 @@ void DC_motor::PIDControl(void){
 	pid_check++;
 	temp = error;
 	rps_now = (double) CountNow / 4 / res_encoder / sr_ratio / time;
+	if(rps_now>10||rps_now<-10){
+		rps_now=0;
+		I=0;
+	}
 	error = rps_goal - rps_now;
 	P = p * error;
 	sum = i * error * time;

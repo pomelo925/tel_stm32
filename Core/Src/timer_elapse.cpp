@@ -62,7 +62,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 
 		/*enc 1*/
-		fr.CountNow = __HAL_TIM_GetCounter(&htim2);
+
+//		if(__HAL_TIM_GetCounter(&htim2)>40000000||fr.rps_now>4800)
+//			fr.CountNow=__HAL_TIM_GetCounter(&htim2)-65535;
+//		else
+			fr.CountNow = __HAL_TIM_GetCounter(&htim2);
+
 		fr.PIDControl();
 		__HAL_TIM_SetCounter(&htim2,0);
 		if (fr.PID >= 0) {
@@ -78,7 +83,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, abs((int)fr.PID));
 
 		/*enc 2*/
-		fl.CountNow = __HAL_TIM_GetCounter(&htim5);
+//		if(__HAL_TIM_GetCounter(&htim5)>400000000||fl.rps_now>4800)
+//			fl.CountNow=0;
+//
+//		else
+			fl.CountNow = __HAL_TIM_GetCounter(&htim5);
+
 		fl.PIDControl();
 		__HAL_TIM_SetCounter(&htim5,0);
 		if (fl.PID < 0) {
@@ -93,7 +103,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, (int )fl.PID);
 
 		/*enc 3*/
-		br.CountNow = __HAL_TIM_GetCounter(&htim3);
+//		if(__HAL_TIM_GetCounter(&htim3)>400000000||br.rps_now>4800)
+//			br.CountNow=0;
+//
+//		 else
+			br.CountNow = __HAL_TIM_GetCounter(&htim3);
+
 		br.PIDControl();
 		__HAL_TIM_SetCounter(&htim3,0);
 		if (br.PID > 0) {
@@ -108,7 +123,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_1, (int )br.PID);
 
 		/*enc 4*/
-		bl.CountNow = __HAL_TIM_GetCounter(&htim4);
+//		if(__HAL_TIM_GetCounter(&htim4)>400000000||bl.rps_now>4800)
+//			bl.CountNow=0;
+//
+//		else
+			bl.CountNow = __HAL_TIM_GetCounter(&htim4);
+
 		bl.PIDControl();
 		__HAL_TIM_SetCounter(&htim4,0);
 		if (bl.PID >= 0) {
