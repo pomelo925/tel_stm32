@@ -18,7 +18,6 @@ CPP_SRCS += \
 ../Core/Src/mainpp.cpp \
 ../Core/Src/mecanum.cpp \
 ../Core/Src/ros_main.cpp \
-../Core/Src/scara.cpp \
 ../Core/Src/stepper.cpp \
 ../Core/Src/stm_main.cpp \
 ../Core/Src/timer_elapse.cpp 
@@ -38,7 +37,6 @@ OBJS += \
 ./Core/Src/mainpp.o \
 ./Core/Src/mecanum.o \
 ./Core/Src/ros_main.o \
-./Core/Src/scara.o \
 ./Core/Src/stepper.o \
 ./Core/Src/stm32h7xx_hal_msp.o \
 ./Core/Src/stm32h7xx_it.o \
@@ -54,7 +52,6 @@ CPP_DEPS += \
 ./Core/Src/mainpp.d \
 ./Core/Src/mecanum.d \
 ./Core/Src/ros_main.d \
-./Core/Src/scara.d \
 ./Core/Src/stepper.d \
 ./Core/Src/stm_main.d \
 ./Core/Src/timer_elapse.d 
@@ -69,7 +66,7 @@ Core/Src/%.o Core/Src/%.su: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/dc_motor.d ./Core/Src/dc_motor.o ./Core/Src/dc_motor.su ./Core/Src/debug.d ./Core/Src/debug.o ./Core/Src/debug.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mainpp.d ./Core/Src/mainpp.o ./Core/Src/mainpp.su ./Core/Src/mecanum.d ./Core/Src/mecanum.o ./Core/Src/mecanum.su ./Core/Src/ros_main.d ./Core/Src/ros_main.o ./Core/Src/ros_main.su ./Core/Src/scara.d ./Core/Src/scara.o ./Core/Src/scara.su ./Core/Src/stepper.d ./Core/Src/stepper.o ./Core/Src/stepper.su ./Core/Src/stm32h7xx_hal_msp.d ./Core/Src/stm32h7xx_hal_msp.o ./Core/Src/stm32h7xx_hal_msp.su ./Core/Src/stm32h7xx_it.d ./Core/Src/stm32h7xx_it.o ./Core/Src/stm32h7xx_it.su ./Core/Src/stm_main.d ./Core/Src/stm_main.o ./Core/Src/stm_main.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32h7xx.d ./Core/Src/system_stm32h7xx.o ./Core/Src/system_stm32h7xx.su ./Core/Src/timer_elapse.d ./Core/Src/timer_elapse.o ./Core/Src/timer_elapse.su
+	-$(RM) ./Core/Src/dc_motor.d ./Core/Src/dc_motor.o ./Core/Src/dc_motor.su ./Core/Src/debug.d ./Core/Src/debug.o ./Core/Src/debug.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mainpp.d ./Core/Src/mainpp.o ./Core/Src/mainpp.su ./Core/Src/mecanum.d ./Core/Src/mecanum.o ./Core/Src/mecanum.su ./Core/Src/ros_main.d ./Core/Src/ros_main.o ./Core/Src/ros_main.su ./Core/Src/stepper.d ./Core/Src/stepper.o ./Core/Src/stepper.su ./Core/Src/stm32h7xx_hal_msp.d ./Core/Src/stm32h7xx_hal_msp.o ./Core/Src/stm32h7xx_hal_msp.su ./Core/Src/stm32h7xx_it.d ./Core/Src/stm32h7xx_it.o ./Core/Src/stm32h7xx_it.su ./Core/Src/stm_main.d ./Core/Src/stm_main.o ./Core/Src/stm_main.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32h7xx.d ./Core/Src/system_stm32h7xx.o ./Core/Src/system_stm32h7xx.su ./Core/Src/timer_elapse.d ./Core/Src/timer_elapse.o ./Core/Src/timer_elapse.su
 
 .PHONY: clean-Core-2f-Src
 

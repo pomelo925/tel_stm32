@@ -10,7 +10,7 @@ extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim15;
 
 /*** Arguments NON-SETUP ***/
-DC_motor fr(188,7,0.001,0.001,512,13.2,200);
+DC_motor fr(105,3,0.002,0.001,512,13.2,200);
 DC_motor fl(5.2,2,0.001,0.001,512,13.2,200);
 DC_motor br(155,2,0.002,0.001,512,13.2,200);
 DC_motor bl(155,5,0.006,0.001,512,13.2,200);

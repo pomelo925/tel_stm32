@@ -6,7 +6,6 @@
 "./Core/Src/mainpp.o"
 "./Core/Src/mecanum.o"
 "./Core/Src/ros_main.o"
-"./Core/Src/scara.o"
 "./Core/Src/stepper.o"
 "./Core/Src/stm32h7xx_hal_msp.o"
 "./Core/Src/stm32h7xx_it.o"
