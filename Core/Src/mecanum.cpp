@@ -9,14 +9,14 @@ Mecanum::Mecanum(void){
 
 // calculate wheel (-> PID) -> calculate car -> pub
 void Mecanum::run(void){
-	tf2_wheel_speed();
+//	tf2_wheel_speed();
 	tf2_car_speed();
 }
 
 // alter wheel speed
 void Mecanum::tf2_wheel_speed(void){
-	fr.rps_goal = (CAR_Goal.Vy - CAR_Goal.Vx + CAR_Goal.Omega*(a+b) )/radius;
 	fl.rps_goal = (CAR_Goal.Vy + CAR_Goal.Vx - CAR_Goal.Omega*(a+b) )/radius;
+	fr.rps_goal = (CAR_Goal.Vy - CAR_Goal.Vx + CAR_Goal.Omega*(a+b) )/radius;
 	bl.rps_goal = (CAR_Goal.Vy - CAR_Goal.Vx - CAR_Goal.Omega*(a+b) )/radius;
 	br.rps_goal = (CAR_Goal.Vy + CAR_Goal.Vx + CAR_Goal.Omega*(a+b) )/radius;
 }

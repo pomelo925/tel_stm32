@@ -1,0 +1,3 @@
+../Core/Src/timing.cpp:60:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	16	static
+../Core/Src/timing.cpp:75:6:void motor_standard()	8	static
+../Core/Src/timing.cpp:140:6:void motor_matlab(int, int, int, int)	32	static

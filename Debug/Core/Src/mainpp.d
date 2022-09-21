@@ -40,8 +40,7 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/std_msgs/Bool.h \
- ../Core/Inc/stm_main.h
+ ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/stm_main.h
 ../Core/Inc/mainpp.h:
 ../Core/Inc/mecanum.h:
 ../Core/Inc/debug.h:
@@ -94,5 +93,4 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/mainpp.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 ../Core/Inc/geometry_msgs/Point.h:
-../Core/Inc/std_msgs/Bool.h:
 ../Core/Inc/stm_main.h:

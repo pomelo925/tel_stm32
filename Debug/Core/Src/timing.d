@@ -1,5 +1,4 @@
-Core/Src/timer_elapse.o: ../Core/Src/timer_elapse.cpp \
- ../Core/Inc/timer_elapse.h \
+Core/Src/timing.o: ../Core/Src/timing.cpp ../Core/Inc/timing.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -40,8 +39,8 @@ Core/Src/timer_elapse.o: ../Core/Src/timer_elapse.cpp \
  ../Core/Inc/ros/node_handle.h ../Core/Inc/ros/subscriber.h \
  ../Core/Inc/ros/service_server.h ../Core/Inc/ros/service_client.h \
  ../Core/Inc/STM32Hardware.h ../Core/Inc/geometry_msgs/Point.h \
- ../Core/Inc/std_msgs/Bool.h ../Core/Inc/dc_motor.h
-../Core/Inc/timer_elapse.h:
+ ../Core/Inc/dc_motor.h
+../Core/Inc/timing.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -91,5 +90,4 @@ Core/Src/timer_elapse.o: ../Core/Src/timer_elapse.cpp \
 ../Core/Inc/ros/service_client.h:
 ../Core/Inc/STM32Hardware.h:
 ../Core/Inc/geometry_msgs/Point.h:
-../Core/Inc/std_msgs/Bool.h:
 ../Core/Inc/dc_motor.h:

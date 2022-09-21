@@ -13,7 +13,6 @@ void main_function(){
 		if(debug_mode) debug_loop();
 		else ROS::loop();
 
-
 	}
 }
 

@@ -14,19 +14,19 @@ void ROS::mecanum_callback(const geometry_msgs::Point &msgs){
 	mecanum.run();
 }
 
-// void ROS::pub_car_vel(void){
-// 	car_speed.x = mecanum.CAR_Now.Vx	;
-// 	car_speed.y = mecanum.CAR_Now.Vy;
-// 	car_speed.z = mecanum.CAR_Now.Omega;
-// 	mecanum_pub.publish(&car_speed);
-// }
+ void ROS::pub_car_vel(void){
+ 	car_speed.x = mecanum.CAR_Now.Vx	;
+ 	car_speed.y = mecanum.CAR_Now.Vy;
+ 	car_speed.z = mecanum.CAR_Now.Omega;
+ 	mecanum_pub.publish(&car_speed);
+ }
 
 
 void ROS::setup(void){
 	nh.initNode();
 
     nh.subscribe(mecanum_sub);
-//    nh.advertise(mecanum_pub);
+    nh.advertise(mecanum_pub);
 }
 
 void ROS::loop(void){

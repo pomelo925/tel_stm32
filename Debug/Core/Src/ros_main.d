@@ -39,8 +39,7 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/std_msgs/Bool.h \
- ../Core/Inc/mecanum.h
+ ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/mecanum.h
 ../Core/Inc/ros_main.h:
 ../Core/Inc/ros.h:
 ../Core/Inc/ros/node_handle.h:
@@ -90,5 +89,4 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 ../Core/Inc/geometry_msgs/Point.h:
-../Core/Inc/std_msgs/Bool.h:
 ../Core/Inc/mecanum.h:

@@ -1,2 +1,1 @@
 ../Core/Src/stm_main.cpp:5:6:void STM::setup()	8	static
-../Core/Src/stm_main.cpp:9:6:void STM::run_mecanum()	8	static

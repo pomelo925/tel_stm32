@@ -17,10 +17,14 @@ class DC_motor{
 		short CountNow;
 		double I_limit;
 		double temp;
+		double cnt_round;
 		int pid_check=0;
 
+		DC_motor(double p, double i, double d, double time, double cnt_round, double limit);
 		DC_motor(double p, double i, double d, double time, double res, double ratio, double limit);
-		void PIDControl();
+		double PIDControl_manual();
+		double PIDControl();
+
 };
 
 extern DC_motor fr;
