@@ -2,28 +2,30 @@
 #define _MOTOR_H_
 
 class DC_motor{
-	public:
-		double p, P;
-		double i, I;
-		double d, D;
-		double PID;
-		double rps_goal;
-		double rps_now;
-		double time;
-		double sum;
+	private:
 		double res_encoder;
 		double sr_ratio;
 		double error;
-		short CountNow;
-		double I_limit;
-		double temp;
+		double error_total;
+		double error_last;
 		double cnt_round;
-		int pid_check=0;
+		double time;
+
+
+	public:
+		double rps_goal;
+		double rps_now;
+		short CountNow;
+
+		double kp;
+		double ki;
+		double kd;
+		double PWM;
 
 		DC_motor(double p, double i, double d, double time, double cnt_round, double limit);
 		DC_motor(double p, double i, double d, double time, double res, double ratio, double limit);
 		double PIDControl_manual();
-		double PIDControl();
+		void PIDControl();
 
 };
 

@@ -75,10 +75,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 void motor_standard(void){
 	/*enc 1*/
 		fr.CountNow = __HAL_TIM_GetCounter(&htim2);
-		fr.PIDControl_manual();
+		fr.PIDControl();
 		__HAL_TIM_SetCounter(&htim2,0);
 
-		if (fr.PID >= 0) {
+		if (fr.PWM >= 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fr, MOTORPLUS_PIN_fr, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fr, MOTORMINUS_PIN_fr, GPIO_PIN_RESET);
 		}
@@ -87,14 +87,14 @@ void motor_standard(void){
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fr, MOTORMINUS_PIN_fr, GPIO_PIN_SET);
 		}
 
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, abs((int)fr.PID)*4200);
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_2, fabs(fr.PWM));
 
 	/*enc 2*/
 		fl.CountNow = __HAL_TIM_GetCounter(&htim5);
-		fl.PIDControl_manual();
+		fl.PIDControl();
 		__HAL_TIM_SetCounter(&htim5,0);
 
-		if (fl.PID < 0) {
+		if (fl.PWM < 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_RESET);
 		}
@@ -103,14 +103,14 @@ void motor_standard(void){
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_SET);
 		}
 
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, abs((int)fl.PID)*4200);
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, fabs(fl.PWM));
 
 	/*enc 3*/
 		br.CountNow = __HAL_TIM_GetCounter(&htim3);
-		br.PIDControl_manual();
+		br.PIDControl();
 		__HAL_TIM_SetCounter(&htim3,0);
 
-		if (br.PID >= 0) {
+		if (br.PWM >= 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_br, MOTORPLUS_PIN_br, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_br, MOTORMINUS_PIN_br, GPIO_PIN_RESET);
 		}
@@ -118,14 +118,14 @@ void motor_standard(void){
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_br, MOTORPLUS_PIN_br, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_br, MOTORMINUS_PIN_br, GPIO_PIN_SET);
 		}
-		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_1, abs((int)br.PID)*4200);
+		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_1, fabs(br.PWM));
 
 	/*enc 4*/
 		bl.CountNow = __HAL_TIM_GetCounter(&htim4);
-		bl.PIDControl_manual();
+		bl.PIDControl();
 		__HAL_TIM_SetCounter(&htim4,0);
 
-		if (bl.PID >= 0) {
+		if (bl.PWM >= 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_bl, MOTORPLUS_PIN_bl, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_bl, MOTORMINUS_PIN_bl, GPIO_PIN_RESET);
 		}
@@ -133,7 +133,7 @@ void motor_standard(void){
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_bl, MOTORPLUS_PIN_bl, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_bl, MOTORMINUS_PIN_bl, GPIO_PIN_SET);
 		}
-		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_2,abs((int)bl.PID)*4200);
+		__HAL_TIM_SET_COMPARE(&htim15, TIM_CHANNEL_2, fabs(bl.PWM));
 
 }
 
