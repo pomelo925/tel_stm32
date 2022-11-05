@@ -10,10 +10,10 @@ extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim15;
 
 /** PIDControl **/
-DC_motor fr(1000,0.5,0, 0.001,512,13.2);
-DC_motor fl(1000,0.5,0, 0.001,512,13.2);
+DC_motor fr(1000,0.5,0, 0.001,512,20.8);
+DC_motor fl(1000,0.5,0, 0.001,512,20.8);
 DC_motor br(1000,0.5,0, 0.001,512,13.2);
-DC_motor bl(1000,0.5,0, 0.001,512,13.2);
+DC_motor bl(1000,0.5,0, 0.001,512,20.8);
 
 /** Manual **/
 //DC_motor fr(0.754, 52.5, 0, 0.001, 42600, 200);

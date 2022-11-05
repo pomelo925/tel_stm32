@@ -11,7 +11,6 @@ class DC_motor{
 		double cnt_round;
 		double time;
 
-
 	public:
 		double rps_goal;
 		double rps_now;
@@ -26,7 +25,6 @@ class DC_motor{
 		DC_motor(double p, double i, double d, double time, double res, double ratio, double limit);
 		double PIDControl_manual();
 		void PIDControl();
-
 };
 
 extern DC_motor fr;

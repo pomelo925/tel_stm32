@@ -15,7 +15,7 @@ void ROS::mecanum_callback(const geometry_msgs::Point &msgs){
 }
 
  void ROS::pub_car_vel(void){
- 	car_speed.x = mecanum.CAR_Now.Vx	;
+ 	car_speed.x = mecanum.CAR_Now.Vx;
  	car_speed.y = mecanum.CAR_Now.Vy;
  	car_speed.z = mecanum.CAR_Now.Omega;
  	mecanum_pub.publish(&car_speed);

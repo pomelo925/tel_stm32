@@ -1,7 +1,6 @@
 #include <timing.h>
 #include "ros_main.h"
 #include "dc_motor.h"
-#include "stdbool.h"
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
@@ -78,7 +77,7 @@ void motor_standard(void){
 		fr.PIDControl();
 		__HAL_TIM_SetCounter(&htim2,0);
 
-		if (fr.PWM >= 0) {
+		if (fr.PWM < 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fr, MOTORPLUS_PIN_fr, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fr, MOTORMINUS_PIN_fr, GPIO_PIN_RESET);
 		}
@@ -94,23 +93,23 @@ void motor_standard(void){
 		fl.PIDControl();
 		__HAL_TIM_SetCounter(&htim5,0);
 
-		if (fl.PWM < 0) {
-			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_RESET);
-		}
-		else{
+//		if (fl.PWM > 0) {
+//			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_RESET);
+//		}
+//		else{
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_SET);
-		}
+//		}
 
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, fabs(fl.PWM));
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 300);
 
 	/*enc 3*/
 		br.CountNow = __HAL_TIM_GetCounter(&htim3);
 		br.PIDControl();
 		__HAL_TIM_SetCounter(&htim3,0);
 
-		if (br.PWM >= 0) {
+		if (br.PWM > 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_br, MOTORPLUS_PIN_br, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_br, MOTORMINUS_PIN_br, GPIO_PIN_RESET);
 		}
@@ -125,7 +124,7 @@ void motor_standard(void){
 		bl.PIDControl();
 		__HAL_TIM_SetCounter(&htim4,0);
 
-		if (bl.PWM >= 0) {
+		if (bl.PWM < 0) {
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_bl, MOTORPLUS_PIN_bl, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_bl, MOTORMINUS_PIN_bl, GPIO_PIN_RESET);
 		}
