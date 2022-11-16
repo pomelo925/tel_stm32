@@ -3,7 +3,7 @@
 #include "mecanum.h"
 
 /** whether turn on debug mode **/
-bool debug_mode = true;
+bool debug_mode = false;
 
 /** debug which function **/
 bool mecanum_debug = true;

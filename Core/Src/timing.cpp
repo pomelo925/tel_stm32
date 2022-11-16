@@ -62,11 +62,32 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	/* ROS publish */
 		static int ms=0;
 		ms++;
-		if(ms%10==0) ROS::pub_car_vel();
+		if(ms%10==0){
+			ROS::pub_car_vel();
+			ROS::pub_reset();
+		}
 
 	/* STM control */
-//		motor_matlab(true, false, false, false);
 		motor_standard();
+	}
+
+	if (htim->Instance == TIM24) {
+		/* touch */
+		if (HAL_GPIO_ReadPin(TOUCH_A_PORT, TOUCH_A_PIN) == 0) {
+			relay_a = 1;
+		} else {
+			relay_a = 0;
+		}
+		if (HAL_GPIO_ReadPin(TOUCH_B_PORT, TOUCH_B_PIN) == 0) {
+			relay_b = 1;
+		} else {
+			relay_b = 0;
+		}
+		if (HAL_GPIO_ReadPin(TOUCH_C_PORT, TOUCH_C_PIN) == 0) {
+			relay_c = 1;
+		} else {
+			relay_c = 0;
+		}
 	}
 }
 
@@ -93,16 +114,16 @@ void motor_standard(void){
 		fl.PIDControl();
 		__HAL_TIM_SetCounter(&htim5,0);
 
-//		if (fl.PWM > 0) {
-//			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_SET);
-//			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_RESET);
-//		}
-//		else{
+		if (fl.PWM > 0) {
+			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_RESET);
+		}
+		else{
 			HAL_GPIO_WritePin(MOTORPLUS_PORT_fl, MOTORPLUS_PIN_fl, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(MOTORMINUS_PORT_fl, MOTORMINUS_PIN_fl, GPIO_PIN_SET);
-//		}
+		}
 
-		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 300);
+		__HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, fabs(fl.PWM));
 
 	/*enc 3*/
 		br.CountNow = __HAL_TIM_GetCounter(&htim3);

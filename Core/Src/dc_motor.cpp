@@ -36,6 +36,7 @@ void DC_motor_init(){
 	HAL_TIM_PWM_Start_IT(&htim12, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_1);
+	HAL_TIM_Base_Start_IT(&htim24);
 }
 
 DC_motor::DC_motor(double p, double i, double d, double time, double res, double ratio){
