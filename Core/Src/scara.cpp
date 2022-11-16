@@ -1,6 +1,11 @@
 #include "scara.h"
 
-void SCARA::trinary(double function, char a_port, char a_pin, char b_port, char b_pin){
+namespace SCARA{
+	double relay;
+}
+
+void SCARA::trinary(double function, GPIO_TypeDef* a_port,
+		uint16_t a_pin, GPIO_TypeDef* b_port, uint16_t b_pin){ \
 	if (function == 1) {
 		HAL_GPIO_WritePin(a_port, a_pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(b_port, b_pin, GPIO_PIN_SET);

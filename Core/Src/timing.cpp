@@ -1,6 +1,9 @@
-#include <timing.h>
+#include "timing.h"
 #include "ros_main.h"
 #include "dc_motor.h"
+#include "reset.h"
+#include "scara.h"
+#include "microswitch.h"
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
@@ -72,22 +75,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	}
 
 	if (htim->Instance == TIM24) {
-		/* touch */
+		/* microswitch */
 		if (HAL_GPIO_ReadPin(TOUCH_A_PORT, TOUCH_A_PIN) == 0) {
-			relay_a = 1;
-		} else {
-			relay_a = 0;
-		}
+			MICROSWITCH::touch_a = 1;
+		} else MICROSWITCH::touch_a = 0;
+
 		if (HAL_GPIO_ReadPin(TOUCH_B_PORT, TOUCH_B_PIN) == 0) {
-			relay_b = 1;
-		} else {
-			relay_b = 0;
-		}
+			MICROSWITCH::touch_b = 1;
+		} else MICROSWITCH::touch_b = 0;
+
 		if (HAL_GPIO_ReadPin(TOUCH_C_PORT, TOUCH_C_PIN) == 0) {
-			relay_c = 1;
-		} else {
-			relay_c = 0;
-		}
+			MICROSWITCH::touch_c = 1;
+		} else MICROSWITCH::touch_c = 0;
 	}
 }
 

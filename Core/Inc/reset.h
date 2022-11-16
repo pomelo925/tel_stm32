@@ -1,6 +1,8 @@
 #ifndef _RESET_H_
 #define _RESET_H_
 
+#include "stm32h7xx_hal.h"
+
 /* part */
 #define FIRST_PART_PORT GPIOF
 #define FIRST_PART_PIN GPIO_PIN_3
@@ -9,11 +11,9 @@
 #define THIRD_PART_PORT GPIOC
 #define THIRD_PART_PIN GPIO_PIN_1
 
-namespace RESET{
-	double state_reset=0;
-
+namespace MYRESET{
+	extern int state;
 	void receive(void);
 }
-
 
 #endif

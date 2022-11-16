@@ -1,0 +1,2 @@
+../Core/Src/scara.cpp:7:6:void SCARA::trinary(double, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	32	static
+../Core/Src/scara.cpp:24:6:void SCARA::run()	8	static

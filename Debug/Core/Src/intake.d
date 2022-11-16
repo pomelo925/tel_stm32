@@ -1,12 +1,4 @@
-Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
- ../Core/Inc/ros.h ../Core/Inc/ros/node_handle.h \
- ../Core/Inc/std_msgs/Time.h ../Core/Inc/ros/msg.h ../Core/Inc/ros/time.h \
- ../Core/Inc/ros/duration.h ../Core/Inc/rosserial_msgs/TopicInfo.h \
- ../Core/Inc/rosserial_msgs/Log.h \
- ../Core/Inc/rosserial_msgs/RequestParam.h ../Core/Inc/ros/publisher.h \
- ../Core/Inc/ros/node_handle.h ../Core/Inc/ros/subscriber.h \
- ../Core/Inc/ros/service_server.h ../Core/Inc/ros/service_client.h \
- ../Core/Inc/STM32Hardware.h \
+Core/Src/intake.o: ../Core/Src/intake.cpp ../Core/Inc/intake.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -38,26 +30,8 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/std_msgs/Int64.h \
- ../Core/Inc/mecanum.h ../Core/Inc/intake.h ../Core/Inc/microswitch.h \
- ../Core/Inc/reset.h ../Core/Inc/scara.h
-../Core/Inc/ros_main.h:
-../Core/Inc/ros.h:
-../Core/Inc/ros/node_handle.h:
-../Core/Inc/std_msgs/Time.h:
-../Core/Inc/ros/msg.h:
-../Core/Inc/ros/time.h:
-../Core/Inc/ros/duration.h:
-../Core/Inc/rosserial_msgs/TopicInfo.h:
-../Core/Inc/rosserial_msgs/Log.h:
-../Core/Inc/rosserial_msgs/RequestParam.h:
-../Core/Inc/ros/publisher.h:
-../Core/Inc/ros/node_handle.h:
-../Core/Inc/ros/subscriber.h:
-../Core/Inc/ros/service_server.h:
-../Core/Inc/ros/service_client.h:
-../Core/Inc/STM32Hardware.h:
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+../Core/Inc/intake.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -90,10 +64,3 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
-../Core/Inc/geometry_msgs/Point.h:
-../Core/Inc/std_msgs/Int64.h:
-../Core/Inc/mecanum.h:
-../Core/Inc/intake.h:
-../Core/Inc/microswitch.h:
-../Core/Inc/reset.h:
-../Core/Inc/scara.h:

@@ -8,6 +8,8 @@ extern TIM_HandleTypeDef htim5;
 extern TIM_HandleTypeDef htim12;
 extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim15;
+extern TIM_HandleTypeDef htim23;
+extern TIM_HandleTypeDef htim24;
 
 /** PIDControl **/
 DC_motor fr(1000,0.5,0, 0.001,512,20.8);

@@ -2,6 +2,8 @@
 #include "mecanum.h"
 #include "intake.h"
 #include "microswitch.h"
+#include "reset.h"
+#include "scara.h"
 
 ros::NodeHandle nh;
 
@@ -20,20 +22,21 @@ ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
 
 /** RESET **/
 void ROS::pub_reset(void){
-	RESET::receive();
-	reset.data = RESET::state_reset;
+	MYRESET::receive();
+	reset.data = MYRESET::state;
 	reset_pub.publish(&reset);
 }
 
 
 /** SCARA **/
-void relay_callback(const std_msgs::Int64 &msgs){
+void ROS::relay_callback(const std_msgs::Int64 &msgs){
 	SCARA::relay = msgs.data;
+	SCARA::run();
 }
 
 
 /** INTAKE **/
-void intake_callback(const geometry_msgs::Point &msgs){
+void ROS::intake_callback(const geometry_msgs::Point &msgs){
 	INTAKE::tilt = msgs.x;
 	INTAKE::stretch = msgs.y;
 	INTAKE::suck = msgs.z;
@@ -42,8 +45,11 @@ void intake_callback(const geometry_msgs::Point &msgs){
 
 
 /** MICROSWITCH **/
-void pub_micro(void){
-	miro_pub.publish(&microswithc);
+void ROS::pub_micro(void){
+	microswitch.x = MICROSWITCH::touch_a;
+	microswitch.y = MICROSWITCH::touch_b;
+	microswitch.z = MICROSWITCH::touch_c;
+	micro_pub.publish(&microswitch);
 }
 
 

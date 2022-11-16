@@ -1,6 +1,10 @@
 #include "intake.h"
 
-void INTAKE::trinary(double function, char a_port, char a_pin, char b_port, char b_pin){
+namespace INTAKE{
+	double tilt, stretch, suck;
+}
+
+void INTAKE::trinary(double function, GPIO_TypeDef* a_port, int a_pin, GPIO_TypeDef* b_port, int b_pin){
 	if (function == 1) {
 		HAL_GPIO_WritePin(a_port, a_pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(b_port, b_pin, GPIO_PIN_SET);

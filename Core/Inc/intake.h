@@ -1,6 +1,8 @@
 #ifndef _INTAKE_H_
 #define _INTAKE_H_
 
+#include "stm32h7xx_hal.h"
+
 /* TILT */
 #define TILT_INA_PORT GPIOB
 #define TILT_INA_PIN GPIO_PIN_6
@@ -19,10 +21,10 @@
 #define STRETCH_INB_PORT GPIOB
 #define STRETCH_INB_PIN GPIO_PIN_7
 
-namespace INATKE{
-	double  tilt, stretch, suck;
+namespace INTAKE{
+	extern double tilt, stretch, suck;
 
-	void trinary(double function, char a_port, char a_pin, char b_port, char b_pin);
+	void trinary(double function, GPIO_TypeDef* a_port, int a_pin, GPIO_TypeDef* b_port, int b_pin);
 	void run();
 }
 

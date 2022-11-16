@@ -15,7 +15,7 @@ namespace ROS{
 	/* STM callback */
 	void mecanum_callback(const geometry_msgs::Point &msg);
 	void intake_callback(const geometry_msgs::Point &msg);
-	void relay_callback(const geometry_msgs::Point &msg);
+	void relay_callback(const std_msgs::Int64 &msg);
 
 	/* STM publish */
 	void pub_car_vel(void);
