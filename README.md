@@ -1,9 +1,3 @@
-# TEL_STM_1
+# tEL_stm32
 
-## 控制的項目
-
-* encoder x4 (DC motor) 
-* microswitch x6
-* servo x1 (intake)
-* stepper motor x1 (intake)
-* stepper motor x1 (chassis omni)
+STM32H723ZG
