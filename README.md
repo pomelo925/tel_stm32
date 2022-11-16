@@ -1,3 +1,3 @@
-# tEL_stm32
+# tel_stm32
 
 STM32H723ZG
