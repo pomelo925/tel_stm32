@@ -24,14 +24,14 @@ ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
 void ROS::pub_reset(void){
 	MYRESET::receive();
 	reset.data = MYRESET::state;
-	reset_pub.publish(&reset);
+//	reset_pub.publish(&reset); // PROBLEMATIC!!!
 }
 
 
 /** SCARA **/
 void ROS::relay_callback(const std_msgs::Int64 &msgs){
-	SCARA::relay = msgs.data;
-	SCARA::run();
+	sc.relay = msgs.data;
+	sc.run();
 }
 
 
@@ -80,6 +80,7 @@ void ROS::setup(void){
 
 void ROS::loop(void){
 	nh.spinOnce();
+
 }
 
 

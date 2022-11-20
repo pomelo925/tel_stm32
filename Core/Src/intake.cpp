@@ -5,15 +5,15 @@ namespace INTAKE{
 }
 
 void INTAKE::trinary(double function, GPIO_TypeDef* a_port, int a_pin, GPIO_TypeDef* b_port, int b_pin){
-	if (function == 1) {
+	if (function == 1){
 		HAL_GPIO_WritePin(a_port, a_pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(b_port, b_pin, GPIO_PIN_SET);
 	}
-	else if (function == 0) {
+	else if (function == 0){
 		HAL_GPIO_WritePin(a_port, a_pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(b_port, b_pin, GPIO_PIN_RESET);
 	}
-	else if (function == -1) {
+	else if (function == -1){
 		HAL_GPIO_WritePin(a_port, a_pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(b_port, b_pin, GPIO_PIN_RESET);
 	}

@@ -12,6 +12,8 @@ void Mecanum::run(void){
 	tf2_wheel_speed();
 	tf2_car_speed();
 }
+
+
 // alter wheel speed
 void Mecanum::tf2_wheel_speed(void){
 	fl.rps_goal = -(CAR_Goal.Vy + CAR_Goal.Vx - CAR_Goal.Omega*(a+b) )/radius;

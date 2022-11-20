@@ -5,18 +5,20 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim5;
+extern TIM_HandleTypeDef htim7;
+extern TIM_HandleTypeDef htim8;
 extern TIM_HandleTypeDef htim12;
 extern TIM_HandleTypeDef htim13;
+extern TIM_HandleTypeDef htim14;
 extern TIM_HandleTypeDef htim15;
 extern TIM_HandleTypeDef htim23;
-extern TIM_HandleTypeDef htim24;
+
 
 /** PIDControl **/
-DC_motor fr(1000,0.5,0, 0.001,512,20.8);
-DC_motor fl(1000,0.5,0, 0.001,512,20.8);
-DC_motor br(1000,0.5,0, 0.001,512,13.2);
-DC_motor bl(1000,0.5,0, 0.001,512,20.8);
-
+DC_motor fr(2700,0.5,0, 0.001,512,20.8);
+DC_motor fl(1700,0.5,0, 0.001,512,20.8);
+DC_motor br(3800,0.6,0.002, 0.001,512,20.8);
+DC_motor bl(3200,0.5,0, 0.001,512,20.8);
 /** Manual **/
 //DC_motor fr(0.754, 52.5, 0, 0.001, 42600, 200);
 //DC_motor fl(5.5, 85, 0, 0.001, 43193, 200);
@@ -33,12 +35,18 @@ void DC_motor_init(){
 	HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_2);
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_1);
 	HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_2);
-	HAL_TIM_Base_Start_IT(&htim13);
+
 	HAL_TIM_PWM_Start_IT(&htim12, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start_IT(&htim12, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start_IT(&htim15, TIM_CHANNEL_1);
-	HAL_TIM_Base_Start_IT(&htim24);
+	HAL_TIM_PWM_Start(&htim23, TIM_CHANNEL_1);
+
+	HAL_TIM_Base_Start_IT(&htim7);
+	HAL_TIM_Base_Start_IT(&htim8);
+	HAL_TIM_Base_Start_IT(&htim13);
+	HAL_TIM_Base_Start_IT(&htim14);
+	HAL_TIM_Base_Start_IT(&htim23);
 }
 
 DC_motor::DC_motor(double p, double i, double d, double time, double res, double ratio){
