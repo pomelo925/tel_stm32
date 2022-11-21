@@ -12,6 +12,5 @@ void main_function(){
 	while(1){
 		if(debug_mode) debug_loop();
 		else ROS::loop();
-
 	}
 }

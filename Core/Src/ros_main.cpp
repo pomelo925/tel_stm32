@@ -4,6 +4,7 @@
 #include "microswitch.h"
 #include "reset.h"
 #include "scara.h"
+#include "intake.h"
 
 ros::NodeHandle nh;
 
@@ -24,7 +25,7 @@ ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
 void ROS::pub_reset(void){
 	MYRESET::receive();
 	reset.data = MYRESET::state;
-//	reset_pub.publish(&reset); // PROBLEMATIC!!!
+	reset_pub.publish(&reset);
 }
 
 
@@ -74,8 +75,11 @@ void ROS::pub_car_vel(void){
 void ROS::setup(void){
 	nh.initNode();
 
-    nh.subscribe(mecanum_sub);
     nh.advertise(mecanum_pub);
+    nh.advertise(reset_pub);
+    nh.subscribe(mecanum_sub);
+    nh.subscribe(intake_sub);
+    nh.subscribe(relay_sub);
 }
 
 void ROS::loop(void){
