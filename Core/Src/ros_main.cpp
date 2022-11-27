@@ -10,16 +10,17 @@ ros::NodeHandle nh;
 
 geometry_msgs::Point microswitch;
 geometry_msgs::Point car_speed;
-std_msgs::Int64 relay;
 std_msgs::Int64 reset;
+std_msgs::Float64 scaraflag;
 
 ros::Subscriber<geometry_msgs::Point> mecanum_sub("mecanum_toSTM", ROS::mecanum_callback);
 ros::Subscriber<geometry_msgs::Point> intake_sub("intake_toSTM", ROS::intake_callback);
-ros::Subscriber<std_msgs::Int64> relay_sub("relay_toSTM", ROS::relay_callback);
+ros::Subscriber<geometry_msgs::Point> scara_sub("scara_toSTM", ROS::scara_callback);
 
 ros::Publisher mecanum_pub("mecanum_fromSTM", &car_speed);
 ros::Publisher reset_pub("reset_fromSTM", &reset);
-ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
+//ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
+ros::Publisher scara_pub("scaraflag_fromSTM", &scaraflag);
 
 /** RESET **/
 void ROS::pub_reset(void){
@@ -30,28 +31,34 @@ void ROS::pub_reset(void){
 
 
 /** SCARA **/
-void ROS::relay_callback(const std_msgs::Int64 &msgs){
-	sc.relay = msgs.data;
+void ROS::scara_callback(const geometry_msgs::Point &msg){
+	sc.x = msg.x;
+	sc.y = msg.y;
+	sc.flag = msg.z;
 	sc.run();
 }
 
+void ROS::pub_scaraflag(void){
+	scaraflag.data = sc.flag;
+	scara_pub.publish(&scaraflag);
+}
 
 /** INTAKE **/
-void ROS::intake_callback(const geometry_msgs::Point &msgs){
-	INTAKE::tilt = msgs.x;
-	INTAKE::stretch = msgs.y;
-	INTAKE::suck = msgs.z;
+void ROS::intake_callback(const geometry_msgs::Point &msg){
+	INTAKE::tilt = msg.x;
+	INTAKE::stretch = msg.y;
+	INTAKE::suck = msg.z;
 	INTAKE::run();
 }
 
 
 /** MICROSWITCH **/
-void ROS::pub_micro(void){
-	microswitch.x = MICROSWITCH::touch_a;
-	microswitch.y = MICROSWITCH::touch_b;
-	microswitch.z = MICROSWITCH::touch_c;
-	micro_pub.publish(&microswitch);
-}
+//void ROS::pub_micro(void){
+//	microswitch.x = MICROSWITCH::touch_a;
+//	microswitch.y = MICROSWITCH::touch_b;
+//	microswitch.z = MICROSWITCH::touch_c;
+//	micro_pub.publish(&microswitch);
+//}
 
 
 
@@ -77,9 +84,11 @@ void ROS::setup(void){
 
     nh.advertise(mecanum_pub);
     nh.advertise(reset_pub);
+    nh.advertise(scara_pub);
+//    nh.advertise(micro_pub);
     nh.subscribe(mecanum_sub);
     nh.subscribe(intake_sub);
-    nh.subscribe(relay_sub);
+    nh.subscribe(scara_sub);
 }
 
 void ROS::loop(void){

@@ -5,7 +5,7 @@
 #include "scara.h"
 #include "microswitch.h"
 
-int axx=0;
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	/** SCARA **/
 	if (htim->Instance == TIM7) {
@@ -52,15 +52,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim->Instance == TIM13) {
 	/* ROS publish */
 		static int ms=0;
-		if(ms%10==0){
+		if(ms%20==0){
 			ROS::pub_car_vel();
 			ROS::pub_reset();
+//			ROS::pub_micro();
+			ROS::pub_scaraflag();
+			ms=0;
 		}
 		ms++;
 
+		if(sc.timer_flag) sc.timer_count++;
+
 	/* PID Control */
 		motor_standard();
-		axx++;
 	}
 
 
@@ -80,7 +84,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		} else MICROSWITCH::touch_c = 0;
 	}
 }
-
 
 void motor_standard(void){
 	/*enc 1*/

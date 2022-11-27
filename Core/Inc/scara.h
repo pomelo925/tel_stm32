@@ -2,6 +2,7 @@
 #define _SCARA_H_
 
 #include "stm32h7xx_hal.h"
+#include "timing.h"
 
 /* SCARA */
 #define PI 3.1415926535897932384
@@ -31,6 +32,9 @@
 extern TIM_HandleTypeDef htim23;
 
 struct SCARA{
+	bool timer_flag=false;
+	int timer_count=0;
+
 	double x = 0, y = -50;
 	double phi, at;
 
@@ -55,7 +59,7 @@ struct SCARA{
 	double pulse_goal = 2050;
 
 	double state = 0;  //ROS
-	int flag = 0;  //
+	double flag = 0;  //
 	int input_check = 0;
 
 	int air_pressure = 0;
@@ -69,10 +73,8 @@ struct SCARA{
 	double relay;
 
 	void run();
-	void trinary(double function, GPIO_TypeDef* a_port, uint16_t a_pin, \
-			GPIO_TypeDef* b_port, uint16_t b_pin);
-	void seize();
 
+	void timer_delay(int sec);
 	double count_atan2(double x, double y);
 	double count_theta2(double x, double y);
 	double count_phi(double x, double y);
