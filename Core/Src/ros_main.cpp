@@ -85,7 +85,6 @@ void ROS::setup(void){
     nh.advertise(mecanum_pub);
     nh.advertise(reset_pub);
     nh.advertise(scara_pub);
-//    nh.advertise(micro_pub);
     nh.subscribe(mecanum_sub);
     nh.subscribe(intake_sub);
     nh.subscribe(scara_sub);
