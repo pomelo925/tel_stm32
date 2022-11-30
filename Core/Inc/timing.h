@@ -61,10 +61,6 @@ void motor_matlab(int fr, int fl, int br, int bl);
 void motor_debug(void);
 
 
-static double fr_array[5000]={0};
-static double fl_array[5000]={0};
-static double br_array[5000]={0};
-static double bl_array[5000]={0};
 
 
 

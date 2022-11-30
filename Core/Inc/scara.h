@@ -59,7 +59,7 @@ struct SCARA{
 	double pulse_goal = 2050;
 
 	double state = 0;  //ROS
-	double flag = 0;  //
+	double flag = 1;  //
 	int input_check = 0;
 
 	int air_pressure = 0;

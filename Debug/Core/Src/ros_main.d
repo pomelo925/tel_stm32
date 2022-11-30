@@ -42,7 +42,7 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
  ../Core/Inc/geometry_msgs/Point.h ../Core/Inc/std_msgs/Int64.h \
  ../Core/Inc/std_msgs/Float64.h ../Core/Inc/mecanum.h \
  ../Core/Inc/intake.h ../Core/Inc/microswitch.h ../Core/Inc/reset.h \
- ../Core/Inc/scara.h ../Core/Inc/timing.h
+ ../Core/Inc/scara.h ../Core/Inc/timing.h ../Core/Inc/STM32Hardware.h
 ../Core/Inc/ros_main.h:
 ../Core/Inc/ros.h:
 ../Core/Inc/ros/node_handle.h:
@@ -100,3 +100,4 @@ Core/Src/ros_main.o: ../Core/Src/ros_main.cpp ../Core/Inc/ros_main.h \
 ../Core/Inc/reset.h:
 ../Core/Inc/scara.h:
 ../Core/Inc/timing.h:
+../Core/Inc/STM32Hardware.h:

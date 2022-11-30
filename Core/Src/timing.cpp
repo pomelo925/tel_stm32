@@ -152,6 +152,10 @@ void motor_standard(void){
 
 void motor_matlab(int a, int b, int c, int d){
 	static int array_count=0;
+	double fr_array[5000]={0};
+	double fl_array[5000]={0};
+	double br_array[5000]={0};
+	double bl_array[5000]={0};
 
 /*enc 1*/
 	fr.CountNow = __HAL_TIM_GetCounter(&htim2);

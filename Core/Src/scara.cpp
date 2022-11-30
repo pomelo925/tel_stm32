@@ -4,21 +4,21 @@ SCARA sc;
 
 void SCARA::run(){
 	//'update' is used by ST
-//	if (update == 1){
-//		x = ST_test_x;
-//		y = ST_test_y;
-//		flag = ST_test_flag;
-//		update = 0;
-//	}
+	if (update == 1){
+		x = ST_test_x;
+		y = ST_test_y;
+		flag = ST_test_flag;
+		update = 0;
+	}
 while(flag!=0){
 	phi = count_phi(x,y);
 		at = count_atan2(x,y);
 		if (count_atan2(x,y) < 0)at += 360;
-		if (at + phi <= 250){
+		if (at + phi <= 230){
 			angle_goal_1 = at + phi;
 			angle_goal_2 = -count_theta2(x,y);
 		}
-		else if(at + phi > 250){
+		else if(at + phi > 230){
 			angle_goal_1 = at - phi;
 			angle_goal_2 = count_theta2(x,y);
 		}
@@ -34,12 +34,12 @@ while(flag!=0){
 		 if (pulse_now != pulse_goal){
 			 while (pulse_now < pulse_goal){
 				 pulse_now ++;
-//					timer_delay(0.3);
+				 timer_delay(0.3);
 				 __HAL_TIM_SET_COMPARE(&htim23, TIM_CHANNEL_1, pulse_now);
 			 }
 			 while (pulse_now > pulse_goal){
 				 pulse_now --;
-//					timer_delay(0.3);
+				 timer_delay(0.3);
 				 __HAL_TIM_SET_COMPARE(&htim23, TIM_CHANNEL_1, pulse_now);
 			 }
 				  input_check = 1;
@@ -102,24 +102,24 @@ while(flag!=0){
 			if (step_2 < 1 && step_2 > 0)step_2 = 1;
 			if (step_3 < 1 && step_3 > 0)step_3 = 1;
 
-			if (x == 0 && y == -50 && flag == 1){
-				step_1 = 120;
-				HAL_GPIO_WritePin(DIR_PORT_1, DIR_PIN_1, GPIO_PIN_SET);
-				step_2 = 30;
-				HAL_GPIO_WritePin(DIR_PORT_2, DIR_PIN_2, GPIO_PIN_RESET);
-				step_3 = 2000;
-				HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_SET);
-				flag = 5;
-			}
 
 			if (valve_switch == 1){
-//				timer_delay(2);
+				timer_delay(2);
 				valve_switch = 0;
 			}
 
 
-			if (step_1 == 0 && step_2 == 0 && step_3 == 0 && input_check == 1){
-				if (flag == 2) flag = 5;
+			if (step_1 == 0 && step_2 == 0 && step_3 == 0 ){
+				if (x == 0 && y == -50 && flag == 1){
+					step_1 = 60;
+					HAL_GPIO_WritePin(DIR_PORT_1, DIR_PIN_1, GPIO_PIN_SET);
+					step_2 = 15;
+					HAL_GPIO_WritePin(DIR_PORT_2, DIR_PIN_2, GPIO_PIN_RESET);
+					step_3 = 1000;
+					HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_SET);
+					flag = 6;
+				}
+				else if (flag == 2) flag = 6;
 				else if (flag == 3){
 					air_pressure = 1, valve_switch = 0;
 					if (high_state == 0){
@@ -129,27 +129,29 @@ while(flag!=0){
 						high_state = 1;
 					}
 					else if (high_state == 1){
-						high_goal = -89;
+						high_goal = -93;
 						high_state = 2;
 					}
 					else if (high_state == 2){
-//						timer_delay(2);
+						timer_delay(2);
 						high_goal = 0;
 						high_state = 3;
 					}
 					else if(high_state == 3 && pulse_now == pulse_goal){
 						high_state = 0;
-						flag = 5;
+						flag = 6;
 					}
-			  }
-				else if (step_1 == 0 && step_2 == 0 && flag == 4){
+				}else if (step_1 == 0 && step_2 == 0 && flag == 4){
 					air_pressure = 0;
 					valve_switch = 1;
 					state = 0;
-					flag = 5;
-				}
-				else if (step_1 == 0 && step_2 == 0 && step_3 ==0 && flag == 5)
+					flag = 6;
+				}else if (step_1 == 0 && step_2 == 0 && step_3 ==0 && flag == 5){
+					high_goal = -10;
+					flag = 6;
+				}else if (step_3 == 0 && flag == 6){
 					flag =0 ;
+				}
 			 }
 	}
 }

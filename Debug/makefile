@@ -50,34 +50,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TEL_STM_1
+BUILD_ARTIFACT_NAME := tel_comp
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TEL_STM_1.elf \
+tel_comp.elf \
 
 MAP_FILES += \
-TEL_STM_1.map \
+tel_comp.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TEL_STM_1.list \
+tel_comp.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TEL_STM_1.elf secondary-outputs
+main-build: tel_comp.elf secondary-outputs
 
 # Tool invocations
-TEL_STM_1.elf TEL_STM_1.map: $(OBJS) $(USER_OBJS) D:\pomelo\DIT\STM32\TEL_STM_1\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "TEL_STM_1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\pomelo\DIT\STM32\TEL_STM_1\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TEL_STM_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+tel_comp.elf tel_comp.map: $(OBJS) $(USER_OBJS) D:\pomelo\DIT\STM32\tel_comp\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "tel_comp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\pomelo\DIT\STM32\tel_comp\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tel_comp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -86,14 +86,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TEL_STM_1.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TEL_STM_1.list"
+tel_comp.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "tel_comp.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TEL_STM_1.elf TEL_STM_1.list TEL_STM_1.map default.size.stdout
+	-$(RM) default.size.stdout tel_comp.elf tel_comp.list tel_comp.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
