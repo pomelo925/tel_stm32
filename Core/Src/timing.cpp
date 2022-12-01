@@ -55,7 +55,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 		if(ms%20==0){
 			ROS::pub_car_vel();
 			ROS::pub_reset();
-//			ROS::pub_micro();
 			ROS::pub_scaraflag();
 			ms=0;
 		}
