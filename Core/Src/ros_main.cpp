@@ -15,14 +15,14 @@ geometry_msgs::Point car_speed;
 std_msgs::Int64 reset;
 std_msgs::Float64 scaraflag;
 
-ros::Subscriber<geometry_msgs::Point> mecanum_sub("mecanum_toSTM", ROS::mecanum_callback);
-ros::Subscriber<geometry_msgs::Point> intake_sub("intake_toSTM", ROS::intake_callback);
-ros::Subscriber<geometry_msgs::Point> scara_sub("scara_toSTM", ROS::scara_callback);
+ros::Subscriber<geometry_msgs::Point> mecanum_sub("/mecanum_toSTM", ROS::mecanum_callback);
+ros::Subscriber<geometry_msgs::Point> intake_sub("/intake_toSTM", ROS::intake_callback);
+ros::Subscriber<geometry_msgs::Point> scara_sub("/scara_toSTM", ROS::scara_callback);
 
-ros::Publisher mecanum_pub("mecanum_fromSTM", &car_speed);
-ros::Publisher reset_pub("reset_fromSTM", &reset);
+ros::Publisher mecanum_pub("/mecanum_fromSTM", &car_speed);
+ros::Publisher reset_pub("/reset_fromSTM", &reset);
 //ros::Publisher micro_pub("microswitch_fromSTM", &microswitch);
-ros::Publisher scara_pub("scaraflag_fromSTM", &scaraflag);
+ros::Publisher scara_pub("/scaraflag_fromSTM", &scaraflag);
 
 /** RESET **/
 void ROS::pub_reset(void){

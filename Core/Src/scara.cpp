@@ -56,8 +56,8 @@ void SCARA::run(){
 				HAL_GPIO_WritePin(DIR_PORT_1, DIR_PIN_1, GPIO_PIN_RESET);
 			}
 
-			if (state == 1)step_1 *= 1.02; //undetermined
-			if (state == 2)step_1 *= 1.05; //undetermined
+			if (state == 1)step_1 *= 1.1; //undetermined
+			if (state == 2)step_1 *= 1.1; //undetermined
 			input_check = 1;
 			angle_now_1 = angle_goal_1;
 		}
@@ -78,8 +78,8 @@ void SCARA::run(){
 				HAL_GPIO_WritePin(DIR_PORT_2, DIR_PIN_2, GPIO_PIN_RESET);
 			}
 
-			if (state == 1)step_2 *= 1.02; //undetermined
-			if (state == 2)step_2 *= 1.05; //undetermined
+			if (state == 1)step_2 *= 1.05; //undetermined
+			if (state == 2)step_2 *= 1.1; //undetermined
 			input_check = 1;
 			angle_now_2 = angle_goal_2;
 		}
@@ -87,12 +87,12 @@ void SCARA::run(){
 
 		if (high_goal != high_now) {
 			step_3 = (high_goal - high_now)*200 *8 / 6;
-
+			a = 0;
 			if (step_3 >= 0) {
-				HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_SET); a=999;
 			} else if (step_3 < 0) {
 				step_3 = -step_3;
-				HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(DIR_PORT_3, DIR_PIN_3, GPIO_PIN_RESET); a=222;
 			}
 			input_check = 1;
 			high_now = high_goal;
@@ -122,26 +122,54 @@ void SCARA::run(){
 			}
 			else if (flag == 3){
 				air_pressure = 1, valve_switch = 0;
-				if (high_state == 0){
-					if (state == 0)servo_angle = 20,state++;
-					else if (state == 1)servo_angle = 270, state++;
-					else if (state == 2)servo_angle = 145;
-					high_state = 1;
-				}
-				else if (high_state == 1){
-					high_goal = -93;
-					high_state = 2;
-				}
-				else if (high_state == 2){
-					timer_delay(1);
-					high_goal = 0;
-					high_state = 3;
-				}
-				else if(high_state == 3 && pulse_now == pulse_goal){
-					high_state = 0;
-					flag = 6;
+
+//				if (high_state == 0){
+//					high_goal = -93;
+//					high_state ++;
+//				}
+//				else if (high_state == 1){
+//					timer_delay(1);
+//					high_goal = 0;
+//					high_state ++;
+//				}
+//				else if(high_state == 2){
+//					if (state == 0)servo_angle = 20,state++;
+//					else if (state == 1)servo_angle = 270, state++;
+//					else if (state == 2)servo_angle = 145;
+//					high_state ++;
+//				}
+//				else if (high_state == 3 && pulse_now == pulse_goal){
+//					high_state = 0;
+//					flag = 6;
+//				}
+				switch(high_state){
+					case 0:
+						if (state == 0)servo_angle = 20,state++;
+						else if (state == 1)servo_angle = 270, state++;
+						else if (state == 2)servo_angle = 145;
+						high_state = 1;
+						break;
+
+					case 1:
+						high_goal = -93;
+						high_state = 2;
+						break;
+
+					case 2:
+						timer_delay(1);
+						high_goal = 0;
+						high_state = 3;
+						break;
+
+					case 3:
+						if(pulse_now == pulse_goal){
+							high_state = 0;
+							flag = 6;
+						}
+						break;
 				}
 			}else if (step_1 == 0 && step_2 == 0 && flag == 4){
+				servo_angle = 145;
 				air_pressure = 0;
 				valve_switch = 1;
 				state = 0;

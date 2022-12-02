@@ -70,6 +70,8 @@ struct SCARA{
 	int ST_test_flag = 0;
 	int update = 0;
 
+	int a =0;
+
 	double relay;
 
 	void run();
